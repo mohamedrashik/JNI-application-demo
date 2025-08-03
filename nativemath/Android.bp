@@ -1,0 +1,42 @@
+cc_library_shared {
+    name: "libnativemath",  // Use _shared to generate .so file for JNI
+
+    srcs: [
+        "src/main/cpp/nativemath.cpp"
+    ],
+
+    header_libs: [
+        "jni_headers",
+        "libeigen",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libcutils",
+        "libutils",
+        "libbinder",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+
+    stl: "libc++_static",
+}
+
+
+android_app {
+    name: "nativemathlib",
+
+    srcs: [
+        "src/main/java/**/*.java",
+        "src/main/java/**/*.kt",
+    ],
+
+    sdk_version: "current",
+    product_specific: true,
+    manifest: "src/main/AndroidManifest.xml",
+    jni_uses_platform_apis: true,
+    jni_libs: ["libnativemath"],
+}

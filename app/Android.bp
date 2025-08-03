@@ -1,0 +1,27 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_app {
+    name: "CarJNIApplication",
+    srcs: [
+        "src/main/**/*.java",  // Java source files
+        "src/main/**/*.kt",    // Kotlin source files, if any
+    ],
+
+    resource_dirs: [
+        "src/main/res",  // Resource directory
+    ],
+
+    manifest: "src/main/AndroidManifest.xml",
+    static_libs: [
+        "nativemathlib",
+        "androidx.appcompat_appcompat",
+        "androidx.core_core-ktx",
+        "com.google.android.material_material",
+	    "androidx.activity_activity",
+	    "androidx-constraintlayout_constraintlayout",
+    ],
+    sdk_version: "current",
+}
+
